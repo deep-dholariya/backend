@@ -28,12 +28,6 @@ app.use(
   })
 );
 
-app.options("*", cors());
-
-
-
-
-
 // Preflight allow
 app.options("*", cors());
 
