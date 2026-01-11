@@ -15,28 +15,20 @@ dotenv.config();
 const app = express();
 
 // ---------------- CONFIG ----------------
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://backend-7898cb3u9-deep-dholariyas-projects.vercel.app"
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Postman / server-to-server requests
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("CORS not allowed"));
-      }
-    },
+    origin: [
+      "http://localhost:5173",
+      "https://backend-ebon-eight-39.vercel.app"
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.options("*", cors());
+
 
 
 
